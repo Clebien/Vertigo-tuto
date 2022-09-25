@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:vu="http://www.morphbit.com/thymeleaf/component">
+<head>
+    <vu:head-meta/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Movie detail</title>
+</head>
+
+<body class="mat desktop no-touch platform-mat">
+<vu:page>
+    <div id="page" v-cloak>
+        <vu:form>
+            <div>
+                <vu:button-link th:if="${model.modeEdit}"  url="@{/movie/} + ${model.movie.movId}" :round size="lg" color="primary" icon="fas fa-ban" :flat ariaLabel="Cancel"   />
+                <vu:button-submit th:if="${model.modeReadOnly}" action="@{_edit}" :round size="lg" color="primary" icon="edit" ariaLabel="Edit" />
+            </div>
+            <div>
+                <vu:block title="Détail du film">
+                    <vu:text-field-read object="movie" field="movId" />
+                    <vu:text-field object="movie" field="title" />
+                </vu:block>
+                <div>
+                    <vu:button-submit th:if="${!model.modeReadOnly}"   icon="save" label="Save" action="@{_save}" size="lg" color="primary" />
+                    <vu:button-link th:if="${model.modeReadOnly}" url="@{/movies/}" label="Go to movies" size="lg" color="secondary" />
+                </div>
+            </div>
+        </vu:form>
+    </div>
+</vu:page>
+</body>
+</html>

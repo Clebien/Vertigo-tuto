@@ -1,0 +1,18 @@
+package your.group.id.gs.modulemetier1.domain 
+
+/* Domaines représentant les types de données utilisables dans les entités */
+create Domain DoId {
+    dataType: Long
+    storeType: "NUMERIC"
+}
+
+create Domain DoLabel {
+    dataType:String
+    storeType: "TEXT"
+}
+
+/* Description d'une entité métier représentant un film et son titre */
+create DtDefinition DtMovie {
+    id movId {domain: DoId label: "ID"}
+    field title {domain: DoLabel label: "Titre" cardinality: "1"  }
+}
